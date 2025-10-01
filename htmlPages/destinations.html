@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonderIndia - Destinations</title>
+    <link rel="stylesheet" href="../Css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/WIindex.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        /* Parallax Hero */
+        .parallax-hero {
+            background: url('../Images/4ktajmahal.jpg') center/cover no-repeat fixed;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Destination cards */
+        .destination-card img {
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .filter-bar {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: -50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Hover Effect */
+        #destinations .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #destinations .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="../Images/WonderIndiaIndianStyle-removebg-preview.png" alt="WonderIndia Logo"
+                        height="80px">
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="./WIindex.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./destinations.html">Top Destinations</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./packages.html">Packages</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                    </ul>
+
+                    <!-- Right side -->
+                    <ul class="navbar-nav d-flex flex-lg-row flex-column">
+                        <li class="nav-item"><a class="btn btn-signup me-lg-2 mb-2 mb-lg-0"
+                                href="./WISignup.html">Signup</a></li>
+                        <li class="nav-item"><a class="btn btn-signin" href="./WILogin.html">Signin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="parallax-hero text-center">
+        <div>
+            <h1 class="fw-bold display-4">Top Destinations in India</h1>
+            <p class="lead">Discover the beauty of India from the Himalayas to the beaches of Goa</p>
+        </div>
+    </section>
+
+    <!-- Search & Filters -->
+    <div class="container filter-bar mt-4">
+        <div class="row g-2">
+            <div class="col-md-6">
+                <input type="text" id="searchBox" class="form-control" placeholder="Search Destination...">
+            </div>
+            <div class="col-md-3">
+                <select id="regionFilter" class="form-select">
+                    <option value="all">All Regions</option>
+                    <option value="north">North India</option>
+                    <option value="south">South India</option>
+                    <option value="east">East India</option>
+                    <option value="west">West India</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary w-100" onclick="filterDestinations()">Apply Filter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Destinations Grid -->
+    <section class="container py-5" id="destinations">
+        <div class="row g-4" id="destinationsGrid">
+
+            <!-- North India -->
+            <div class="col-md-4 destination-card" data-region="north" data-name="Jaipur">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/northIndia/Jaipur.avif" class="card-img-top" alt="Jaipur">
+                    <div class="card-body">
+                        <h5 class="card-title">Jaipur</h5>
+                        <p class="card-text">The Pink City, home to palaces, forts, and vibrant bazaars.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="north" data-name="Delhi">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/northIndia/Delhi.webp" class="card-img-top" alt="Delhi">
+                    <div class="card-body">
+                        <h5 class="card-title">Delhi</h5>
+                        <p class="card-text">The capital of India, a mix of heritage and modern life.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="north" data-name="Leh Ladakh">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/northIndia/lehladakh.webp" class="card-img-top" alt="Leh Ladakh">
+                    <div class="card-body">
+                        <h5 class="card-title">Leh-Ladakh</h5>
+                        <p class="card-text">Mountains, monasteries, and the adventure of a lifetime.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="north" data-name="Agra">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/northIndia/Agra.webp" class="card-img-top" alt="Agra">
+                    <div class="card-body">
+                        <h5 class="card-title">Agra</h5>
+                        <p class="card-text">Home to the Taj Mahal, symbol of eternal love and Status of sacrifise.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="north" data-name="Varanasi">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/northIndia/varanasi.webp" class="card-img-top" alt="Varanasi">
+                    <div class="card-body">
+                        <h5 class="card-title">Varanasi</h5>
+                        <p class="card-text">The spiritual capital of India on the banks of the Ganges.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- West India -->
+            <div class="col-md-4 destination-card" data-region="west" data-name="Goa">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/westIndia/goa.webp" class="card-img-top" alt="Goa">
+                    <div class="card-body">
+                        <h5 class="card-title">Goa</h5>
+                        <p class="card-text">Golden beaches, nightlife, and water sports and Enjoyable Things.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="west" data-name="Mumbai">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/westIndia/mumbai.avif" class="card-img-top" alt="Mumbai">
+                    <div class="card-body">
+                        <h5 class="card-title">Mumbai</h5>
+                        <p class="card-text">The City of Dreams with Bollywood vibes and Marine Drive.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="west" data-name="Udaipur">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/westIndia/udaipur.webp" class="card-img-top" alt="Udaipur">
+                    <div class="card-body">
+                        <h5 class="card-title">Udaipur</h5>
+                        <p class="card-text">The City of Lakes with stunning palaces and heritage.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="west" data-name="Ahmedabad">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/westIndia/ahmedabad.avif" class="card-img-top" alt="Ahmedabad">
+                    <div class="card-body">
+                        <h5 class="card-title">Ahmedabad</h5>
+                        <p class="card-text">Cultural hub with Sabarmati Ashram and street food.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="west" data-name="Rann of Kutch">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/westIndia/kutch.webp" class="card-img-top" alt="Rann of Kutch">
+                    <div class="card-body">
+                        <h5 class="card-title">Rann of Kutch</h5>
+                        <p class="card-text">The white desert festival under moonlit nights.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- South India -->
+            <div class="col-md-4 destination-card" data-region="south" data-name="Kerala">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/southindia/kerala.webp" class="card-img-top" alt="Kerala">
+                    <div class="card-body">
+                        <h5 class="card-title">Kerala</h5>
+                        <p class="card-text">Houseboats, backwaters, and lush greenery.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="south" data-name="Mysore">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/southindia/mysoor.webp" class="card-img-top" alt="Mysore">
+                    <div class="card-body">
+                        <h5 class="card-title">Mysore</h5>
+                        <p class="card-text">Palaces, silk sarees, and Dasara festival charm.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="south" data-name="Hampi">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/southindia/hampi.webp" class="card-img-top" alt="Hampi">
+                    <div class="card-body">
+                        <h5 class="card-title">Hampi</h5>
+                        <p class="card-text">Ruins of Vijayanagara Empire, a UNESCO World Heritage site.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="south" data-name="Ooty">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/southindia/ooty.webp" class="card-img-top" alt="Ooty">
+                    <div class="card-body">
+                        <h5 class="card-title">Ooty</h5>
+                        <p class="card-text">Queen of Hill Stations with tea gardens and Nilgiris.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="south" data-name="Kanyakumari">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/southindia/kanyakumari.webp" class="card-img-top" alt="Kanyakumari">
+                    <div class="card-body">
+                        <h5 class="card-title">Kanyakumari</h5>
+                        <p class="card-text">Southern tip of India, sunrise & Vivekananda Rock Memorial.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- East India -->
+            <div class="col-md-4 destination-card" data-region="east" data-name="Darjeeling">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/eastIndia/darjeeling.avif" class="card-img-top" alt="Darjeeling">
+                    <div class="card-body">
+                        <h5 class="card-title">Darjeeling</h5>
+                        <p class="card-text">The Queen of Hills, famous for tea gardens and Kanchenjunga views.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="east" data-name="Kolkata">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/eastIndia/kolkata.webp" class="card-img-top" alt="Kolkata">
+                    <div class="card-body">
+                        <h5 class="card-title">Kolkata</h5>
+                        <p class="card-text">The City of Joy with colonial architecture and culture.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="east" data-name="Puri">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/eastIndia/jaganath.avif" class="card-img-top" alt="Puri">
+                    <div class="card-body">
+                        <h5 class="card-title">Puri</h5>
+                        <p class="card-text">Jagannath Temple and the famous Rath Yatra festival.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="east" data-name="Shillong">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/eastIndia/shillong.webp" class="card-img-top" alt="Shillong">
+                    <div class="card-body">
+                        <h5 class="card-title">Shillong</h5>
+                        <p class="card-text">Scotland of the East with waterfalls and music culture.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 destination-card" data-region="east" data-name="Kaziranga">
+                <div class="card shadow-sm ms-auto" style="width: 23rem;">
+                    <img src="../Images/eastIndia/kaziranga.webp" class="card-img-top" alt="Kaziranga">
+                    <div class="card-body">
+                        <h5 class="card-title">Kaziranga</h5>
+                        <p class="card-text">UNESCO site, home of the one-horned rhinoceros.</p>
+                        <a href="packages.html" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bold">Ready for Your Adventure?</h2>
+            <p class="lead">Choose from our packages and start your journey with WonderIndia!</p>
+            <a href="packages.html" class="btn btn-primary btn-lg">Explore Packages</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center ">
+            <img src="../Images/WonderIndiaIndianStyle-removebg-preview.png" alt="WonderIndia Logo" height="60"
+                class="mb-2">
+            <p>&copy; 2025 WonderIndia Tours. All Rights Reserved.</p>
+            <div>
+                <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-light"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Js/bootstrap.min.js"></script>
+    <script>
+        function filterDestinations() {
+            let search = document.getElementById("searchBox").value.toLowerCase();
+            let region = document.getElementById("regionFilter").value;
+            let cards = document.querySelectorAll(".destination-card");
+
+            cards.forEach(card => {
+                let name = card.dataset.name.toLowerCase();
+                let cardRegion = card.dataset.region;
+
+                if ((region === "all" || cardRegion === region) && name.includes(search)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

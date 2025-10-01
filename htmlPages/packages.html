@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonderIndia - Travel Packages</title>
+    <link rel="stylesheet" href="../Css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/WIindex.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004d7a;
+            --accent-color: #ffd23f;
+            --success-color: #2d5016;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+        }
+
+        body {
+            padding-top: 90px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, orange, white, green),
+                url('../Images/packages.avifs');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .filter-section {
+            background: var(--light-bg);
+            padding: 2rem 0;
+        }
+
+        .filter-btn {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .package-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .card-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--success-color);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+
+        .discount-badge {
+            background: #dc3545;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .package-card img {
+            height: 220px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .package-card {
+            margin-bottom: 30px;
+        }
+
+        .btn-book {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .btn-book:hover {
+            background: #e55a2b;
+        }
+
+        .search-section {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-input {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 0.7rem 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 2rem 0 1rem;
+        }
+
+        .footer-social a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner h1 {
+                font-size: 2rem;
+            }
+
+            .hero-banner p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../Images/WonderIndiaIndianStyle-removebg-preview.png" alt="WonderIndia Logo"
+                        height="80px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="./WIindex.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./destinations.html">Top Destinations</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./packages.html">Packages</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav d-flex flex-lg-row flex-column">
+                        <li class="nav-item"><a class="btn btn-signup me-lg-2" href="./WISignup.html">Signup</a></li>
+                        <li class="nav-item"><a class="btn btn-signin" href="./WILogin.html">Signin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Discover Incredible India</h1>
+            <p>Handcrafted travel experiences at unbeatable prices</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <input type="text" class="form-control search-input" placeholder="Search destinations...">
+                </div>
+                <div class="col-lg-6">
+                    <select class="form-select">
+                        <option>All Price Ranges</option>
+                        <option>Budget (Under ₹20,000)</option>
+                        <option>Mid-Range (₹20,000 - ₹30,000)</option>
+                        <option>Premium (Above ₹30,000)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="text-muted mb-3">Filter by Category</h6>
+                <button class="filter-btn active" data-filter="all">All Packages</button>
+                <button class="filter-btn" data-filter="beach">Beach & Islands</button>
+                <button class="filter-btn" data-filter="mountains">Mountains</button>
+                <button class="filter-btn" data-filter="heritage">Heritage & Culture</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn" data-filter="spiritual">Spiritual</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages -->
+    <section class="packages py-5" id="package" style="padding-bottom: 80px;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Featured Travel Packages</h2>
+                <p class="section-subtitle">Carefully curated experiences that showcase the best of India</p>
+            </div>
+            <div class="row g-4">
+
+                <!-- Goa Package -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="beach">
+                        <img src="../Images/goaBeach.jpg" class="card-img-top" alt="Goa Beach Paradise">
+                        <div class="card-body">
+                            <h5 class="card-title">Goa Beach Paradise</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Goa • 5 Days / 4 Nights</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Beach Resort Stay</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Water Sports</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹30,000</span>
+                                <span class="price">₹25,000</span>
+                                <span class="discount-badge">15% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./goa.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ladakh -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="adventure">
+                        <img src="../Images/ladakhAdventure.webp" class="card-img-top" alt="Ladakh Adventure">
+                        <div class="card-body">
+                            <h5 class="card-title">Ladakh Adventure</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Ladakh • 7 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>High Altitude Lakes</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Monastery Visits</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹45,000</span>
+                                <span class="price">₹40,000</span>
+                                <span class="discount-badge">11% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./ladakh.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kerala -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="beach">
+                        <img src="../Images/keralaBackwaters.webp" class="card-img-top" alt="Kerala Backwaters">
+                        <div class="card-body">
+                            <h5 class="card-title">Kerala Backwaters</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Kerala • 6 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Houseboat Stay</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Ayurvedic Spa</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹35,000</span>
+                                <span class="price">₹30,000</span>
+                                <span class="discount-badge">14% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./kerala.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rajasthan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="heritage">
+                        <img src="../Images/rajsthanHeritage.webp" class="card-img-top" alt="Rajasthan Heritage">
+                        <div class="card-body">
+                            <h5 class="card-title">Rajasthan Heritage Tour</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Rajasthan • 6 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Palace Visits</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Desert Safari</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹32,000</span>
+                                <span class="price">₹28,000</span>
+                                <span class="discount-badge">12% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./rajsthan.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Himachal -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="mountains">
+                        <img src="../Images/himachalMountains.webp" class="card-img-top" alt="Himachal">
+                        <div class="card-body">
+                            <h5 class="card-title">Himachal Mountains</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Himachal • 5 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Skiing</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Hill Trekking</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹25,000</span>
+                                <span class="price">₹22,000</span>
+                                <span class="discount-badge">12% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./himachal.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Varanasi -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="spiritual">
+                        <img src="../Images/varanasiSpiritual.webp" class="card-img-top" alt="Varanasi">
+                        <div class="card-body">
+                            <h5 class="card-title">Varanasi Spiritual Journey</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Varanasi • 4 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Ganga Aarti</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Temple Visits</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹20,000</span>
+                                <span class="price">₹18,000</span>
+                                <span class="discount-badge">10% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./varanasi.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Andaman -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="beach">
+                        <img src="../Images/AndamanIslands.webp" class="card-img-top" alt="Andaman">
+                        <div class="card-body">
+                            <h5 class="card-title">Andaman Islands Escape</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Andaman • 6 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Snorkeling</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Beach Stay</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹40,000</span>
+                                <span class="price">₹35,000</span>
+                                <span class="discount-badge">13% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./andaman.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agra -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="heritage">
+                        <img src="../Images/4ktajmahal.jpg" class="card-img-top" alt="Agra">
+                        <div class="card-body">
+                            <h5 class="card-title">Agra Taj Mahal Special</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Agra • 3 Days</div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Taj Mahal Visit</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Agra Fort</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹15,000</span>
+                                <span class="price">₹12,000</span>
+                                <span class="discount-badge">20% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./booking-agra.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meghalaya -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card package-card" data-category="mountains">
+                        <img src="../Images/meghalay.webp" class="card-img-top" alt="Meghalaya Hills">
+                        <div class="card-body">
+                            <h5 class="card-title">Meghalaya Hills & Waterfalls</h5>
+                            <div class="card-subtitle"><i class="bi bi-geo-alt me-1"></i>Meghalaya • 5 Days / 4 Nights
+                            </div>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Living Root Bridges</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Waterfalls</li>
+                            </ul>
+                            <div class="price-section mb-3">
+                                <span class="original-price">₹30,000</span>
+                                <span class="price">₹27,000</span>
+                                <span class="discount-badge">10% OFF</span>
+                            </div>
+                            <button class="btn btn-book">
+                                <a href="./Meghalaya.html" class="text-decoration-none" style="color: white;">
+                                    <i class="bi bi-calendar-check me-2"></i>Book Now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <img src="../Images/WonderIndiaIndianStyle-removebg-preview.png" alt="WonderIndia Logo" height="60"
+                        class="mb-3">
+                    <p>&copy; 2025 WonderIndia Tours. All Rights Reserved.</p>
+                    <p class="small">Experience the incredible diversity of India with our expertly crafted tours.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <h6 class="mb-3">Follow Us</h6>
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-input");
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const priceFilter = document.querySelector("select");
+            const cards = document.querySelectorAll(".package-card");
+
+            let selectedCategory = "all";
+            let selectedRange = "All Price Ranges";
+
+            function applyFilters() {
+                const searchValue = searchInput.value.toLowerCase();
+
+                cards.forEach(card => {
+                    const title = card.querySelector(".card-title").innerText.toLowerCase();
+                    const category = card.getAttribute("data-category");
+                    const priceText = card.querySelector(".price").innerText.replace(/[₹,]/g, "");
+                    const price = parseInt(priceText);
+
+                    let show = true;
+
+                    // 🔎 Search filter
+                    if (!title.includes(searchValue)) {
+                        show = false;
+                    }
+
+                    // 🎯 Category filter
+                    if (selectedCategory !== "all" && category !== selectedCategory) {
+                        show = false;
+                    }
+
+                    // 💰 Price filter
+                    if (selectedRange.includes("Under")) {
+                        if (!(price < 20000)) show = false;
+                    } else if (selectedRange.includes("Mid-Range")) {
+                        if (!(price >= 20000 && price <= 30000)) show = false;
+                    } else if (selectedRange.includes("Premium")) {
+                        if (!(price > 30000)) show = false;
+                    }
+
+                    card.parentElement.style.display = show ? "" : "none";
+                });
+            }
+
+            // 🔎 Search input
+            searchInput.addEventListener("keyup", applyFilters);
+
+            // 🎯 Category filter
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // remove active state
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+
+                    const text = this.innerText.toLowerCase();
+
+                    if (text.includes("all")) {
+                        selectedCategory = "all";
+                    } else if (text.includes("beach")) {
+                        selectedCategory = "beach";
+                    } else if (text.includes("mountains")) {
+                        selectedCategory = "mountains";
+                    } else if (text.includes("heritage")) {
+                        selectedCategory = "heritage";
+                    } else if (text.includes("adventure")) {
+                        selectedCategory = "adventure";
+                    } else if (text.includes("spiritual")) {
+                        selectedCategory = "spiritual";
+                    }
+
+                    applyFilters();
+                });
+            });
+
+            // 💰 Price filter
+            priceFilter.addEventListener("change", function () {
+                selectedRange = this.value;
+                applyFilters();
+            });
+        });
+    </script>
+</body>
+
+</html>
